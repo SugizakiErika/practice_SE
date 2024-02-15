@@ -23,6 +23,8 @@ Route::get('/', [PostController::class, 'index']);
 //PostController::class,'index':作ったControllerのindex関数を実行する
 //つまり、'/'にアクセスしたらPostControllerのindex関数を実行するということ
 
+//'/post/{対象のDataID}'にアクセスしたら、PostControllerのshowメソッドを実行する
+Route::get('/posts/{post}',[PostController::class,'show']);
 
 //過去の練習用↓
 //Route::get('/posts', [PostController::class, 'index']);
