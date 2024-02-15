@@ -1,5 +1,7 @@
 <?php
-
+//routeを扱う
+//ブラウザから任意のURLのアクセスがあった場合に
+//どのControllerの処理を動かすか決める役割
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 
@@ -13,9 +15,17 @@ use App\Http\Controllers\PostController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//Route::get('/posts', [PostController::class, 'index']);
-Route::get('/', [PostController::class, 'index']);
 
+Route::get('/', [PostController::class, 'index']);
+//Route:Laravel既存機能のRouteファサードを使う
+//get:HTTPメソッドを指定する
+//'/':任意のURLを指定する
+//PostController::class,'index':作ったControllerのindex関数を実行する
+//つまり、'/'にアクセスしたらPostControllerのindex関数を実行するということ
+
+
+//過去の練習用↓
+//Route::get('/posts', [PostController::class, 'index']);
 //Route::get('/', function () {
   //  return view('posts.index');
 //});

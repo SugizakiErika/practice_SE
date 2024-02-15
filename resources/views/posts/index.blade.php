@@ -1,3 +1,5 @@
+<!--MVCのVのViewの部分-->
+<!--サイトの見た目を扱う、サイトを表示する-->
 <!DOCTYPE html>
 <html lang="{{ str_replace('_','-',app()->getLocale()) }}">
     <head>
@@ -10,6 +12,8 @@
         <h1>Blog Name</h1>
         <div class='posts'>
             @foreach ($posts as $post)
+            <!--Controllerから受け取った変数は｛｛＄変数名｝｝という形で受け取れる-->
+            <!--foreach文:$postsの要素を順番に取り出し、Spostに格納する-->
             <div class='post'>
                 <h2 class='title'>{{ $post->title }}</h2>
                 <p class='body'>{{ $post->body }}</p>
