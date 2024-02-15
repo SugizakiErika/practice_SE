@@ -15,7 +15,8 @@
             <!--Controllerから受け取った変数は｛｛＄変数名｝｝という形で受け取れる-->
             <!--foreach文:$postsの要素を順番に取り出し、Spostに格納する-->
             <div class='post'>
-                <h2 class='title'>{{ $post->title }}</h2>
+                <h2 class='title'>
+                    <a href="/posts/{{ $post->id }}"><h2 class='title'>{{ $post->title }}"</h2></a>
                 <p class='body'>{{ $post->body }}</p>
             </div>
             @endforeach

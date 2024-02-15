@@ -10,21 +10,20 @@ namespace App\Http\Controllers; //どこにあるか
 use Illuminate\Http\Request;
 use App\Models\Post;
 
-/**
- * 
- * Post一覧を表示する
- * 
- * @param Post Postモデル
- * @return array Postモデル
- * 
- */
 
 class PostController extends Controller //Controllerを継承する
 {
+    
+ /**
+  * Post一覧を表示する
+  * 
+  * @param Post Postモデル
+  * @return array Postモデル
+  */
     public function index(Post $post)
     //インポートしたPostをインスタンス化して$postとして使用。
     {
-    return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);
+        return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);
     //view ('post.index')とは
     //viewディレクトリ配下のpostディレクトリにあるindex.blade.phpを
     //勝手に返してくれるという意味
@@ -32,5 +31,16 @@ class PostController extends Controller //Controllerを継承する
     //変数名=>値という形でviewにデータを渡す
     //view側ではこのとき変数名'$post'で値を参照することができる
     //getPagonateByLimit():Post(Model)での処理
+    }
+    
+    /**
+     * 特定のIDのpostを表示する
+     * 
+     * @params Object Post //引数の$postはid=1のPostインスタンス
+     * @return Response post view
+     */
+    public function show(Post $post)
+    {
+        return view('posts.show')->with(['post' => $post]);
     }
 }
