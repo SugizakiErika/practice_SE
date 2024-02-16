@@ -18,13 +18,24 @@ use App\Http\Controllers\PostController;
 
 Route::get('/', [PostController::class, 'index']);
 //Route:Laravel既存機能のRouteファサードを使う
-//get:HTTPメソッドを指定する
+//get:HTTPメソッドを指定する、データをもらうアクセス
 //'/':任意のURLを指定する
 //PostController::class,'index':作ったControllerのindex関数を実行する
 //つまり、'/'にアクセスしたらPostControllerのindex関数を実行するということ
 
+
+//下のshowメソッドよりも先に記載しないと{post}にcreateが入ってバグるので注意
+Route::get('/posts/create',[PostController::class,'create']);
+
+
 //'/post/{対象のDataID}'にアクセスしたら、PostControllerのshowメソッドを実行する
 Route::get('/posts/{post}',[PostController::class,'show']);
+
+
+//DBへの登録用ルーティング
+//post:データを渡すアクセス
+Route::post('/posts',[PostController::class,'store']);
+
 
 //過去の練習用↓
 //Route::get('/posts', [PostController::class, 'index']);
