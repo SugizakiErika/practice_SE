@@ -26,7 +26,7 @@ class PostController extends Controller //Controllerを継承する
     public function index(Post $post)
     //インポートしたPostをインスタンス化して$postとして使用。
     {
-        return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);
+       return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);
     //view ('post.index')とは
     //viewディレクトリ配下のpostディレクトリにあるindex.blade.phpを
     //勝手に返してくれるという意味
@@ -44,7 +44,8 @@ class PostController extends Controller //Controllerを継承する
      */
     public function show(Post $post)
     {
-        return view('posts.show')->with(['post' => $post]);
+        //return view('posts.show')->with(['post' => $post]);
+        return view('posts.show',compact('post'));
     }
     
     /**
@@ -82,7 +83,7 @@ class PostController extends Controller //Controllerを継承する
          //$post->body = $input["body"];
          //$post->save();
          
-         return redirect('/posts/' .$post->id);
+         return redirect('/posts/' . $post->id);
          //リダイレクトする：サイトやページなどを新しいURLに変更した際に
          //                  自動的に転送する仕組み
          //$post->save()が完了した時点でPostインスタンスにはIDが付与され、
