@@ -16,7 +16,7 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', [PostController::class, 'index']);
+Route::get('/', [PostController::class, 'index'])->name('index');
 //Route:Laravel既存機能のRouteファサードを使う
 //get:HTTPメソッドを指定する、データをもらうアクセス
 //'/':任意のURLを指定する
@@ -25,17 +25,23 @@ Route::get('/', [PostController::class, 'index']);
 
 
 //下のshowメソッドよりも先に記載しないと{post}にcreateが入ってバグるので注意
-Route::get('/posts/create',[PostController::class,'create']);
+Route::get('/posts/create',[PostController::class,'create'])->name('create');
 
 
 //'/post/{対象のDataID}'にアクセスしたら、PostControllerのshowメソッドを実行する
-Route::get('/posts/{post}',[PostController::class,'show']);
+Route::get('/posts/{post}',[PostController::class,'show'])->name('show');
 
 
 //DBへの登録用ルーティング
-//post:データを渡すアクセス
-Route::post('/posts',[PostController::class,'store']);
+//post:データを渡すアクセスで新規作成やデータの削除、バッチ処理開始を行う時に使う
+Route::post('/posts',[PostController::class,'store'])->name('store');
 
+//ブログ投稿編集画面表示用
+Route::get('/posts/{post}/edit',[PostController::class,'edit']);
+
+//ブログ投稿編集実行
+//put:データを渡すアクセスで既存データを置き換えるときに使う
+Route::put('/posts/{post}',[PostController::class,'update']);
 
 //過去の練習用↓
 //Route::get('/posts', [PostController::class, 'index']);

@@ -1,5 +1,6 @@
 <!--MVCのVのViewの部分-->
 <!--サイトの見た目を扱う、サイトを表示する-->
+<!--タイトルと内容全部表示しているところ-->
 <!DOCTYPE html>
 <html lang="{{ str_replace('_','-',app()->getLocale()) }}">
     <head>
@@ -16,13 +17,13 @@
             <!--foreach文:$postsの要素を順番に取り出し、Spostに格納する-->
             <div class='post'>
                 <h2 class='title'>
-                    <a href="/posts/{{ $post->id }}"><h2 class='title'>{{ $post->title }}"</h2></a>
+                <a href="/posts/{{ $post->id }}"><h2 class='title'>{{ $post->title }}</h2></a>
                 <p class='body'>{{ $post->body }}</p>
             </div>
             @endforeach
         </div>
         <div class="footer">
-            <a href="/posts/create">create</a>
+            <a href="{{ route('create') }}">create</a>
         </div>
         <div class='paginate'>
             {{ $posts->links()}}

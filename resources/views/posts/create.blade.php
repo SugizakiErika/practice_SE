@@ -10,7 +10,7 @@
     </head>
     <body>
         <h1>Blog Name</h1>
-        <form action="/posts" method="POST">
+        <form action="{{ route('store') }}" method="POST">
             <!--@csrf:CSRFトークンフィールドでセキュリティ驚異防止に必ず記載する-->
             <!--formタグの内側に記載する-->
             @csrf
@@ -34,7 +34,7 @@
             <input type="submit" value="store"/>
         </form>
         <div class="back">
-            [<a href="/">back</a>]
+            [<a href="{{ route('index') }}">back</a>]
         </div>
     </body>
 </html>
