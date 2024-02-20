@@ -10,7 +10,7 @@
     </head>
     <body>
         <h1>Blog Name</h1>
-        <form action="{{ route('store') }}" method="POST">
+        <form action="/posts" method="POST">
             <!--@csrf:CSRFトークンフィールドでセキュリティ驚異防止に必ず記載する-->
             <!--formタグの内側に記載する-->
             @csrf

@@ -34,7 +34,7 @@ Route::get('/posts/{post}',[PostController::class,'show'])->name('show');
 
 //DBへの登録用ルーティング
 //post:データを渡すアクセスで新規作成やデータの削除、バッチ処理開始を行う時に使う
-Route::post('/posts',[PostController::class,'store'])->name('store');
+Route::post('/posts',[PostController::class,'store']);
 
 //ブログ投稿編集画面表示用
 Route::get('/posts/{post}/edit',[PostController::class,'edit']);
@@ -42,6 +42,9 @@ Route::get('/posts/{post}/edit',[PostController::class,'edit']);
 //ブログ投稿編集実行
 //put:データを渡すアクセスで既存データを置き換えるときに使う
 Route::put('/posts/{post}',[PostController::class,'update']);
+
+//ブログ削除用
+Route::delete('/posts/{post}', [PostController::class,'delete']);
 
 //過去の練習用↓
 //Route::get('/posts', [PostController::class, 'index']);

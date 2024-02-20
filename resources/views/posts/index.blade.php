@@ -19,6 +19,12 @@
                 <h2 class='title'>
                 <a href="/posts/{{ $post->id }}"><h2 class='title'>{{ $post->title }}</h2></a>
                 <p class='body'>{{ $post->body }}</p>
+                <!--削除するための追記↓-->
+                <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" onclick="deletePost({{ $post->id }})">delete</button>
+                </form>
             </div>
             @endforeach
         </div>
@@ -28,6 +34,15 @@
         <div class='paginate'>
             {{ $posts->links()}}
         </div>
-
+        <!--↓バッククオートで囲む削除用の追記javaScript-->
+        <script>
+            function deletePost(id) {
+                'use strict'
+                
+                if(confirm('削除すると復元できません。　\n本当に削除しますか？')){
+                    document.getElementById(`form_${id}`).submit();
+                }
+            }
+        </script>
     </body>
 </html>
