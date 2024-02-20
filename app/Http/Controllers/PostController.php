@@ -91,17 +91,26 @@ class PostController extends Controller //Controllerを継承する
          //リダイレクト可能なので上記のような記載が可能となる
      }
      
+     //編集
      public function edit(Post $post)
      {
          //dd($post->method());
          return view('posts.edit')->with(['post' => $post]);
      }
      
+     //更新
      public function update(PostRequest $request, Post $post)
      {
          $input_post = $request['post'];
          $post->fill($input_post)->save();
          return redirect('/posts/' .$post->id);
+     }
+     
+     //削除
+     public function delete(Post $post)
+     {
+         $post->delete();
+         return redirect('/');
      }
 }
 

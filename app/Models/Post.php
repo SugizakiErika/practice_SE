@@ -6,10 +6,12 @@ namespace App\Models; //フォルダのどこか
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;//追加
 
 class Post extends Model //Modelを継承する
 {
     use HasFactory;
+    use SoftDeletes;//発行されるSQLがDELETE文になる
     
     //データ取得件数制限をかけ、降順に並べるようにし、ページの目次？を追加する
     public function getPaginateByLimit(int $limit_count = 5)
