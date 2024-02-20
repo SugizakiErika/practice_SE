@@ -44,8 +44,8 @@ class PostController extends Controller //Controllerを継承する
      */
     public function show(Post $post)
     {
-        //return view('posts.show')->with(['post' => $post]);
-        return view('posts.show',compact('post'));
+        return view('posts.show')->with(['post' => $post]);
+        //return view('posts.show',compact('post'));
     }
     
     /**
@@ -90,4 +90,18 @@ class PostController extends Controller //Controllerを継承する
          //プロパティとしても保持しているので今回保存したpostのIDに
          //リダイレクト可能なので上記のような記載が可能となる
      }
+     
+     public function edit(Post $post)
+     {
+         //dd($post->method());
+         return view('posts.edit')->with(['post' => $post]);
+     }
+     
+     public function update(PostRequest $request, Post $post)
+     {
+         $input_post = $request['post'];
+         $post->fill($input_post)->save();
+         return redirect('/posts/' .$post->id);
+     }
 }
+

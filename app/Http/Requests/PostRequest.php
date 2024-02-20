@@ -14,6 +14,7 @@ class PostRequest extends FormRequest
      *
      * @return bool
      */
+     //認証させたいときに使うクラス
     //public function authorize()
     //{
     //    return true;
