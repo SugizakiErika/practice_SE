@@ -112,5 +112,7 @@ class PostController extends Controller //Controllerを継承する
          $post->delete();
          return redirect('/');
      }
+     
+     
 }
 

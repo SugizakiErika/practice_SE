@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->string('title',50);
+            $table->string('body',200);
             $table->timestamps();
+            $table->softDeletes();
+            //論理削除処理で必要になる削除日時カラム(deleted_at)を追加する用
         });
     }
 
