@@ -56,17 +56,18 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         //トークンの不一致を検出した場合、元のページにリダイレクトする
+        //下記parentに関わらないように記載する(動かなくなる)
         if($exception instanceof TokenMismatchException)
         {
             //dd($request);
             //return back()->withInput();
 
-            return redirect()->back()->withInput($request->input())->with('error','セッションが切れました。再度お試しください。');
+            return redirect()->back()->withInput($request->input())->with('app_error','セッションが切れました。再度お試しください。');
             //withInput:ユーザーが新しい場所にリダイレクトする前にRedirectResposeインスタンスが提供する
             //withInputメソッドを使用して現在のリクエストの入力データをセッションへ一時保存する
             //入力をセッションへ一時保存すると次のリクエスト中に簡単に取得可能
         }
         
-        return parent::render($request,$exception);
+        return parent::render($request,$exception);//絶対にいじらない
     }
 }
