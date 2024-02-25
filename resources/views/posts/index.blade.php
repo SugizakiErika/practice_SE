@@ -17,6 +17,7 @@
             <!--foreach文:$postsの要素を順番に取り出し、Spostに格納する-->
             <div class='post'>
                 <h2 class='title'>
+                <a href="">{{ $post->category->name }}</a>
                 <a href="/posts/{{ $post->id }}"><h2 class='title'>{{ $post->title }}</h2></a>
                 <p class='body'>{{ $post->body }}</p>
                 <!--削除するための追記↓-->
@@ -27,13 +28,15 @@
                 </form>
             </div>
             @endforeach
-        </div>
+      
         <div class="footer">
             <a href="{{ route('create') }}">create</a>
         </div>
+        <p>ログインユーザー：{{ Auth::user()->name }}</p>
         <div class='paginate'>
             {{ $posts->links()}}
         </div>
+         </div>
         <!--↓バッククオートで囲む削除用の追記javaScript-->
         <script>
             function deletePost(id) {
