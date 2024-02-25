@@ -12,6 +12,7 @@ namespace App\Http\Controllers; //どこにあるか
 
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
+use App\Models\Category;
 
 
 class PostController extends Controller //Controllerを継承する
@@ -53,9 +54,11 @@ class PostController extends Controller //Controllerを継承する
      * 
      * @return view
      */
-    public function create()
+    public function create(Category $category)
     {
-        return view('posts.create');
+        //ブログにカテゴリー名を選択できるようにする
+        //create.blade.phpにカテゴリーすべてのデータを渡す
+        return view('posts.create')->with(['categories' => $category->get()]);
     }
     
     /**
@@ -112,7 +115,6 @@ class PostController extends Controller //Controllerを継承する
          $post->delete();
          return redirect('/');
      }
-     
      
 }
 

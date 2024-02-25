@@ -31,6 +31,15 @@
                 <textarea name="post[body]" placeholder="今日も一日お疲れ様でした。">{{ old('post.body') }}</textarea>
                 <p class="body__error" style="color:red">{{  $errors->first('post.body') }}</p>
             </div>
+            <div calss="category">
+                <h2>Category</h2>
+                <select name="post[category_id]">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        <!--実際に送信したい値はidなのでvalueには$category_idを記載する-->
+                    @endforeach
+                </select>
+            </div>
             <input type="submit" value="store"/>
         </form>
         <div class="back">
